@@ -1,0 +1,1606 @@
+/* =========================================================
+   MAX MEMORIES - STYLE.CSS
+   STILE: Neo-Brutalismo Premium, Componenti Interattivi & Dark Mode
+   Ispirato al Template 4 di gianbetto.github.io
+   ========================================================= */
+
+/* --- Import Font Google --- */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap');
+
+/* --- Variabili Globali & Sistema Colori --- */
+:root {
+  /* Temi Sfondo & Testo (Light Mode Default) */
+  --bg-primary: #fdfbf7;
+  --bg-secondary: #f4f0ea;
+  --bg-card: #ffffff;
+  --color-dark: #111111;
+  --color-text: #1a1a1a;
+  --color-muted: #555555;
+  --border-color: #111111;
+  --grid-line: rgba(17, 17, 17, 0.06);
+
+  /* Palette Brutalista Satura & Vivace */
+  --color-yellow: #ffd000;
+  --color-pink: #fd4b72;
+  --color-blue: #3500ff;
+  --color-cyan: #00e5ff;
+  --color-mint: #00f5d4;
+  --color-purple: #a855f7;
+  --color-orange: #ff6b35;
+  --color-white: #ffffff;
+
+  /* Bordi & Ombre Nette Brutaliste */
+  --border-thick: 3px solid var(--border-color);
+  --border-thin: 2px solid var(--border-color);
+  --shadow-flat: 6px 6px 0px var(--border-color);
+  --shadow-flat-hover: 2px 2px 0px var(--border-color);
+  --shadow-flat-lg: 10px 10px 0px var(--border-color);
+  --shadow-flat-sm: 4px 4px 0px var(--border-color);
+
+  /* Tipografia */
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Transizioni */
+  --transition-fast: 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-smooth: 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+  --transition-spring: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* --- Tema Scuro (Dark Mode) --- */
+[data-theme="dark"] {
+  --bg-primary: #121215;
+  --bg-secondary: #1a1a1e;
+  --bg-card: #1e1e24;
+  --color-dark: #f8f9fa;
+  --color-text: #e4e4e7;
+  --color-muted: #a1a1aa;
+  --border-color: #f8f9fa;
+  --grid-line: rgba(255, 255, 255, 0.07);
+
+  --shadow-flat: 6px 6px 0px #f8f9fa;
+  --shadow-flat-hover: 2px 2px 0px #f8f9fa;
+  --shadow-flat-lg: 10px 10px 0px #f8f9fa;
+  --shadow-flat-sm: 4px 4px 0px #f8f9fa;
+}
+
+/* --- Reset & Stili Base --- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height, 85px) + 20px);
+  font-size: 16px;
+}
+
+/* Offset di scroll per tutte le sezioni con ID per non nascondere i titoli */
+section[id],
+#hero,
+#sardegna,
+#lauree,
+#altri-ricordi,
+#video-laurea,
+#australia {
+  scroll-margin-top: calc(var(--header-height, 85px) + 20px);
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  background-image: 
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 26px 26px;
+  color: var(--color-text);
+  line-height: 1.55;
+  overflow-x: hidden;
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Texture Grain Sovrimpressione */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.02'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* --- Scrollbar Brutalista --- */
+::-webkit-scrollbar {
+  width: 14px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-left: var(--border-thick);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--color-yellow);
+  border: 3px solid var(--bg-secondary);
+  box-shadow: inset -2px -2px 0px #111111;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-pink);
+}
+
+/* --- Layout Container & Utility --- */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 5rem 0;
+}
+
+.section-border-bottom {
+  border-bottom: var(--border-thick);
+}
+
+/* --- Tipografia --- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  color: var(--color-dark);
+}
+
+p {
+  color: var(--color-text);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --- Pulsanti Brutalisti --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-weight: 800;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  padding: 0.8rem 1.6rem;
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  color: #111111;
+  box-shadow: var(--shadow-flat);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+  text-decoration: none;
+  user-select: none;
+}
+
+.btn:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-flat-lg);
+}
+
+.btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: var(--shadow-flat-hover);
+}
+
+.btn-yellow { background-color: var(--color-yellow); color: #111111; }
+.btn-pink { background-color: var(--color-pink); color: #ffffff; }
+.btn-cyan { background-color: var(--color-cyan); color: #111111; }
+.btn-mint { background-color: var(--color-mint); color: #111111; }
+.btn-purple { background-color: var(--color-purple); color: #ffffff; }
+.btn-orange { background-color: var(--color-orange); color: #ffffff; }
+
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.85rem;
+  box-shadow: var(--shadow-flat-sm);
+}
+.btn-sm:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-flat);
+}
+.btn-sm:active {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px var(--border-color);
+}
+.btn-lg {
+  padding: 1.1rem 2.2rem;
+  font-size: 1.15rem;
+}
+.w-full {
+  width: 100%;
+}
+
+/* --- Badge & Tag Brutalisti --- */
+.badge-brutalist {
+  display: inline-block;
+  padding: 0.35rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: var(--border-thin);
+  box-shadow: 3px 3px 0px var(--border-color);
+  background-color: var(--color-yellow);
+  color: #111111;
+}
+
+/* --- HEADER & NAVBAR --- */
+.main-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--bg-primary);
+  border-bottom: var(--border-thick);
+  padding: 0.75rem 0;
+  backdrop-filter: blur(10px);
+}
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+}
+
+.logo-brutalist {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-heading);
+  font-size: 1.22rem;
+  font-weight: 900;
+  text-transform: none;
+  color: #111111;
+  padding: 0.28rem 0.65rem;
+  border: var(--border-thick);
+  background-color: var(--color-yellow);
+  box-shadow: var(--shadow-flat-sm);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.logo-brutalist:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-flat);
+}
+
+.logo-icon {
+  font-size: 1.15rem;
+  color: var(--color-pink);
+}
+
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: 0.45rem;
+  row-gap: 0.55rem;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links li {
+  display: inline-flex;
+}
+
+.nav-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 0.38rem 0.72rem;
+  min-height: 35px;
+  background-color: var(--bg-card);
+  color: var(--color-dark);
+  border: var(--border-thin);
+  box-shadow: 2px 2px 0px var(--border-color);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast), color var(--transition-fast);
+  text-decoration: none;
+  border-radius: 0;
+}
+
+.nav-link:hover {
+  background-color: var(--color-yellow);
+  color: #111111;
+  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px var(--border-color);
+}
+
+.nav-link:active,
+.nav-link.active {
+  background-color: var(--color-yellow);
+  color: #111111;
+  box-shadow: 1px 1px 0px var(--border-color);
+  transform: translate(1px, 1px);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.theme-toggle-btn {
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  color: var(--color-dark);
+  box-shadow: var(--shadow-flat-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.theme-toggle-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-flat);
+}
+
+.theme-icon-sun { display: none; }
+.theme-icon-moon { display: block; }
+[data-theme="dark"] .theme-icon-sun { display: block; }
+[data-theme="dark"] .theme-icon-moon { display: none; }
+
+/* --- Selettore Lingua Brutalista (IT | EN) --- */
+.lang-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.5rem;
+  height: 42px;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  color: var(--color-dark);
+  box-shadow: var(--shadow-flat-sm);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  user-select: none;
+  white-space: nowrap;
+}
+
+.lang-toggle-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-flat);
+}
+
+.lang-chip {
+  display: inline-block;
+  padding: 0.2rem 0.35rem;
+  line-height: 1;
+  color: var(--color-muted);
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+}
+
+.lang-chip.active {
+  background-color: var(--color-yellow);
+  color: #111111;
+  font-weight: 900;
+  box-shadow: 1px 1px 0px var(--border-color);
+  border: 1px solid var(--border-color);
+}
+
+.lang-sep {
+  color: var(--color-muted);
+  font-weight: 400;
+  user-select: none;
+  font-size: 0.8rem;
+}
+
+/* --- Gruppo Controlli Header (Lingua + Tema) --- */
+.header-tools-group {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.theme-toggle-text {
+  display: none;
+}
+
+.nav-mobile-tools {
+  display: none;
+}
+
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 42px;
+  height: 42px;
+  padding: 8px;
+  border: var(--border-thick);
+  background-color: var(--color-yellow);
+  box-shadow: var(--shadow-flat-sm);
+  cursor: pointer;
+}
+
+.mobile-toggle span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #111111;
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.mobile-toggle.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.mobile-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-toggle.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* --- HERO LANDING SECTION (MEMORIE INSIEME + MAX FOTOPROFILO) --- */
+.hero-section {
+  padding: 4.5rem 0 3.5rem 0;
+  border-bottom: var(--border-thick);
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3.5rem;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.hero-title {
+  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.03em;
+}
+
+.hero-title-highlight {
+  display: inline-block;
+  background-color: var(--color-yellow);
+  color: #111111;
+  padding: 0.1rem 0.5rem;
+  border: var(--border-thick);
+  box-shadow: 5px 5px 0px var(--border-color);
+  transform: rotate(-1deg);
+  margin-top: 0.2rem;
+}
+
+.hero-description {
+  font-size: 1.15rem;
+  line-height: 1.65;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+  max-width: 600px;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Card Protagonista Max (Hero Right) - Grande e d'Impatto */
+.hero-max-card {
+  position: relative;
+  background-color: var(--bg-card);
+  border: var(--border-thick);
+  box-shadow: var(--shadow-flat-lg);
+  max-width: 440px;
+  width: 100%;
+  margin: 0 auto;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.hero-max-card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 14px 14px 0px var(--border-color);
+}
+
+.hero-max-card:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-flat-hover);
+}
+
+.hero-max-badge {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: var(--color-pink);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 0.82rem;
+  padding: 0.35rem 0.85rem;
+  border: var(--border-thin);
+  box-shadow: 3px 3px 0px var(--border-color);
+  text-transform: uppercase;
+  z-index: 5;
+}
+
+.hero-max-image-wrap {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-bottom: var(--border-thick);
+  overflow: hidden;
+}
+
+.hero-max-image-wrap img {
+  width: 100%;
+  height: auto;
+  max-height: 440px;
+  display: block;
+  object-fit: cover;
+  transition: transform var(--transition-smooth);
+}
+
+.hero-max-card:hover .hero-max-image-wrap img {
+  transform: scale(1.03);
+}
+
+.hero-max-caption {
+  padding: 1.2rem 1.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: var(--bg-card);
+}
+
+.hero-max-name {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.55rem;
+  text-transform: uppercase;
+  color: var(--color-dark);
+  line-height: 1.1;
+}
+
+.hero-max-subtitle {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  color: var(--color-muted);
+  margin-top: 0.25rem;
+}
+
+.hero-max-btn {
+  pointer-events: none;
+}
+
+/* --- SEZIONI TEMATICHE (SARDEGNA, LAUREE, ALTRI RICORDI) --- */
+.section-header-brutalist {
+  margin-bottom: 2.5rem;
+}
+.section-header-brutalist.centered {
+  text-align: center;
+}
+
+.section-title {
+  display: inline-block;
+  font-size: clamp(1.8rem, 3.8vw, 2.6rem);
+  padding: 0.35rem 1.1rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-flat);
+  margin-bottom: 0.8rem;
+  color: #111111;
+}
+
+.section-title.bg-cyan { background-color: var(--color-cyan); color: #111111; }
+.section-title.bg-pink { background-color: var(--color-pink); color: #ffffff; }
+.section-title.bg-mint { background-color: var(--color-mint); color: #111111; }
+.section-title.bg-yellow { background-color: var(--color-yellow); color: #111111; }
+.section-title.bg-orange { background-color: var(--color-orange); color: #ffffff; }
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--color-muted);
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+/* Griglie Fotografiche: Massimo 2 Colonne su Desktop, 1 Colonna su Smartphone */
+.gallery-grid-2,
+.gallery-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: start;
+  gap: 2.2rem;
+}
+
+.gallery-item {
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-flat);
+  display: flex;
+  flex-direction: column;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  overflow: hidden;
+}
+
+.gallery-item:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: var(--shadow-flat-lg);
+}
+
+.gallery-item:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-flat-hover);
+}
+
+/* Container Immagine: Proporzione Originale Naturale (Nessun ritaglio forzato 4:3) */
+.gallery-image-container {
+  position: relative;
+  width: 100%;
+  background-color: var(--bg-secondary);
+  border-bottom: var(--border-thick);
+  overflow: hidden;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gallery-image-container img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  transition: transform var(--transition-smooth);
+}
+
+.gallery-item:hover .gallery-image-container img {
+  transform: scale(1.03);
+}
+
+.gallery-overlay-btn {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: all var(--transition-fast);
+  z-index: 5;
+  pointer-events: none;
+}
+
+.gallery-item:hover .gallery-overlay-btn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.gallery-content {
+  padding: 1.1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.gallery-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.gallery-tag {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 700;
+  padding: 0.2rem 0.5rem;
+  border: 1.5px solid var(--border-color);
+  background-color: var(--color-yellow);
+  color: #111111;
+  text-transform: uppercase;
+}
+
+.gallery-title {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.25;
+}
+
+.gallery-desc {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  line-height: 1.45;
+  margin-bottom: 0.9rem;
+  flex-grow: 1;
+}
+
+/* --- SEZIONE SPECIALE LAUREA: VIDEO & COMPLIMENTI --- */
+.video-section {
+  background-color: var(--bg-secondary);
+  border-top: var(--border-thick);
+  border-bottom: var(--border-thick);
+  padding: 5rem 0;
+}
+
+.video-layout-grid {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.video-player-card {
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-flat-lg);
+  overflow: hidden;
+}
+
+.video-player-header {
+  padding: 0.8rem 1.2rem;
+  background-color: var(--color-pink);
+  color: #ffffff;
+  border-bottom: var(--border-thick);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.video-container {
+  position: relative;
+  background-color: #000000;
+  width: 100%;
+}
+
+.video-container video {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  display: block;
+  object-fit: contain;
+}
+
+.video-player-caption {
+  padding: 1.2rem 1.4rem;
+  background-color: var(--bg-card);
+}
+
+.video-player-caption h4 {
+  font-size: 1.35rem;
+  margin-bottom: 0.4rem;
+}
+
+.video-player-caption p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* Bacheca Complimenti Post-It */
+.compliments-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.compliment-box {
+  padding: 1.4rem;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-flat);
+  position: relative;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.compliment-box:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: var(--shadow-flat-lg);
+}
+
+.compliment-yellow { background-color: var(--color-yellow); color: #111111; }
+.compliment-mint { background-color: var(--color-mint); color: #111111; }
+.compliment-cyan { background-color: var(--color-cyan); color: #111111; }
+
+.compliment-author {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+  text-transform: uppercase;
+}
+
+.compliment-text {
+  font-size: 0.98rem;
+  line-height: 1.5;
+  color: #111111;
+}
+
+/* --- CONCLUSIONE: AUSTRALIA & ORIZZONTE --- */
+.australia-section {
+  padding: 5.5rem 0;
+  background-color: var(--bg-primary);
+  border-bottom: var(--border-thick);
+}
+
+.australia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+/* Riquadro Foto Orizzonte Panoramico */
+.horizon-photo-wrapper {
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-flat-lg);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.horizon-photo-wrapper:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 14px 14px 0px var(--border-color);
+}
+
+.horizon-photo-wrapper img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  display: block;
+}
+
+.horizon-stamp {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background-color: var(--color-yellow);
+  color: #111111;
+  border: var(--border-thick);
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-mono);
+  font-weight: 900;
+  font-size: 0.88rem;
+  box-shadow: 3px 3px 0px #111111;
+  text-transform: uppercase;
+}
+
+.horizon-caption-bar {
+  padding: 1.1rem 1.4rem;
+  background-color: var(--bg-card);
+  border-top: var(--border-thick);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.horizon-caption-bar strong {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+/* Boarding Pass / Carta d'Imbarco per l'Australia */
+.boarding-pass-card {
+  border: var(--border-thick);
+  background-color: var(--bg-card);
+  box-shadow: var(--shadow-flat-lg);
+  padding: 2.2rem;
+  position: relative;
+}
+
+.boarding-pass-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px dashed var(--border-color);
+  padding-bottom: 1.2rem;
+  margin-bottom: 1.4rem;
+}
+
+.boarding-pass-title {
+  font-size: 1.5rem;
+  font-family: var(--font-heading);
+  font-weight: 900;
+}
+
+.boarding-flight-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+.boarding-flight-item span {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  text-transform: uppercase;
+}
+.boarding-flight-item strong {
+  font-size: 1.1rem;
+  color: var(--color-dark);
+}
+
+.boarding-message {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.8rem;
+  color: var(--color-text);
+  padding: 1rem;
+  background-color: var(--bg-secondary);
+  border-left: 5px solid var(--color-orange);
+}
+
+.boarding-pass-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 2px dashed var(--border-color);
+  padding-top: 1.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+}
+
+/* --- LIGHTBOX MODAL SCHERMO INTERO --- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(17, 17, 17, 0.88);
+  backdrop-filter: blur(8px);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.modal-overlay.active {
+  display: flex;
+  opacity: 1;
+}
+
+.modal-brutalist {
+  background-color: var(--bg-card);
+  border: 4px solid var(--border-color);
+  box-shadow: 14px 14px 0px var(--border-color);
+  max-width: 950px;
+  width: 100%;
+  max-height: 92vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  animation: modalPop 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes modalPop {
+  0% { transform: scale(0.92); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.4rem;
+  border-bottom: var(--border-thick);
+  background-color: var(--color-yellow);
+  color: #111111;
+}
+
+.modal-title {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+}
+
+.modal-counter {
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: bold;
+  background-color: #111111;
+  color: #ffffff;
+  padding: 0.2rem 0.6rem;
+  margin-left: 0.8rem;
+}
+
+.modal-close-btn {
+  width: 36px;
+  height: 36px;
+  background-color: var(--color-pink);
+  color: #ffffff;
+  border: var(--border-thin);
+  box-shadow: 3px 3px 0px #111111;
+  font-size: 1.4rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform var(--transition-fast);
+}
+
+.modal-close-btn:hover {
+  transform: scale(1.1);
+}
+
+.modal-body {
+  position: relative;
+  background-color: #0d0d0f;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.modal-body img {
+  max-width: 100%;
+  max-height: 58vh;
+  object-fit: contain;
+  display: block;
+}
+
+.modal-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  background-color: var(--color-yellow);
+  color: #111111;
+  border: var(--border-thick);
+  box-shadow: 4px 4px 0px #111111;
+  font-size: 1.3rem;
+  font-weight: 900;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.modal-nav-btn:hover {
+  transform: translateY(-50%) scale(1.1);
+  background-color: var(--color-cyan);
+}
+
+.modal-prev { left: 16px; }
+.modal-next { right: 16px; }
+
+.modal-caption {
+  padding: 1.2rem 1.4rem;
+  border-top: var(--border-thick);
+  background-color: var(--bg-card);
+}
+
+.modal-caption h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.3rem;
+}
+
+.modal-caption p {
+  color: var(--color-muted);
+  font-size: 0.95rem;
+}
+
+/* --- TOAST NOTIFICATION --- */
+.toast-notification {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--color-mint);
+  color: #111111;
+  border: var(--border-thick);
+  box-shadow: var(--shadow-flat);
+  padding: 1rem 1.5rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.95rem;
+  z-index: 10001;
+  display: none;
+  animation: toastSlide 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toast-notification.active {
+  display: block;
+}
+
+@keyframes toastSlide {
+  0% { transform: translateY(20px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+/* --- FOOTER --- */
+.main-footer {
+  border-top: var(--border-thick);
+  background-color: var(--bg-secondary);
+  padding: 3.5rem 0 2rem 0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.footer-bottom {
+  border-top: var(--border-thin);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+/* --- RESPONSIVE DESIGN GLOBALE: DESKTOP & SMARTPHONE --- */
+
+/* Tablet & Schermi Medi (<= 1024px) */
+@media (max-width: 1024px) {
+  .header-container {
+    flex-wrap: wrap;
+    row-gap: 0.75rem;
+  }
+  .main-header nav {
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .nav-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+    row-gap: 0.55rem;
+    width: 100%;
+  }
+  .nav-links li {
+    display: flex;
+    width: 100%;
+  }
+  .nav-link {
+    width: 100%;
+    min-height: 38px;
+    padding: 0.4rem 0.5rem;
+    font-size: 0.82rem;
+    box-shadow: 2px 2px 0px var(--border-color);
+    text-align: center;
+    justify-content: center;
+  }
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .gallery-grid-2,
+  .gallery-grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.8rem;
+  }
+  .video-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .australia-grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Smartphone & Tablet Verticali (<= 768px) */
+@media (max-width: 768px) {
+  /* Layout e Spaziature Compatte */
+  .section-padding {
+    padding: 3.2rem 0;
+  }
+  .hero-section {
+    padding: 2.2rem 0 2rem 0;
+  }
+  .video-section {
+    padding: 3rem 0;
+  }
+  .australia-section {
+    padding: 3rem 0;
+  }
+  .container {
+    padding: 0 1.1rem;
+  }
+
+  /* Header e Navbar Mobile: Spazio Massimizzato in Alto */
+  .main-header {
+    padding: 0.55rem 0;
+  }
+  .header-container {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .main-header nav {
+    order: unset;
+    width: auto;
+  }
+  .logo-brutalist {
+    font-size: clamp(0.96rem, 3.8vw, 1.18rem);
+    padding: 0.25rem 0.55rem;
+    gap: 0.35rem;
+  }
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    flex-shrink: 0;
+  }
+  .btn-share-text {
+    display: none;
+  }
+  #btn-share {
+    padding: 0.4rem 0.65rem;
+    font-size: 0.95rem;
+    height: 42px;
+  }
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-primary);
+    border-bottom: var(--border-thick);
+    flex-direction: column;
+    padding: 1rem 1.2rem;
+    gap: 0.65rem;
+    box-shadow: 0px 8px 0px var(--border-color);
+    max-height: calc(100vh - 75px);
+    overflow-y: auto;
+  }
+  .nav-links.active {
+    display: flex;
+  }
+  .nav-links li {
+    width: 100%;
+    display: block;
+  }
+  .nav-link {
+    width: 100%;
+    padding: 0.8rem 1.1rem;
+    font-size: 0.98rem;
+    border: var(--border-thin);
+    background-color: var(--bg-card);
+    box-shadow: 3px 3px 0px var(--border-color);
+    display: block;
+    text-align: left;
+    white-space: normal;
+  }
+  .mobile-toggle {
+    display: flex;
+  }
+
+  /* Nascondi controlli rapidi dalla topbar su smartphone */
+  .header-actions .header-tools-group {
+    display: none;
+  }
+
+  /* Controlli Lingua e Modalità Notte nel menu a tendina su smartphone (dopo Verso l'Australia) */
+  .nav-mobile-tools {
+    display: block;
+    width: 100%;
+    margin-top: 0.5rem;
+    padding-top: 0.9rem;
+    border-top: var(--border-thick);
+  }
+  .nav-mobile-tools .header-tools-group {
+    display: flex;
+    gap: 0.65rem;
+    width: 100%;
+  }
+  .nav-mobile-tools .lang-toggle-btn {
+    flex: 1;
+    height: 44px;
+    justify-content: center;
+    font-size: 0.9rem;
+    box-shadow: 2px 2px 0px var(--border-color);
+  }
+  .nav-mobile-tools .theme-toggle-btn {
+    flex: 1.35;
+    width: auto;
+    height: 44px;
+    padding: 0.4rem 0.8rem;
+    gap: 0.5rem;
+    justify-content: center;
+    box-shadow: 2px 2px 0px var(--border-color);
+  }
+  .nav-mobile-tools .theme-toggle-text {
+    display: inline-block;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    color: var(--color-dark);
+  }
+
+  /* Hero Section */
+  .hero-eyebrow {
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+  }
+  .hero-title {
+    font-size: clamp(1.9rem, 7.2vw, 3.2rem);
+    margin-bottom: 1.2rem;
+    line-height: 1.1;
+  }
+  .hero-description {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    margin-bottom: 1.4rem;
+  }
+  .hero-actions {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.8rem;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    font-size: 1.05rem;
+    padding: 0.95rem 1.4rem;
+  }
+
+  /* Card Grande Protagonista Max su Smartphone */
+  .hero-max-card {
+    max-width: 100%;
+    box-shadow: var(--shadow-flat);
+    margin-top: 0.5rem;
+  }
+  .hero-max-image-wrap img {
+    max-height: 360px;
+  }
+  .hero-max-caption {
+    padding: 1rem 1.1rem;
+  }
+  .hero-max-name {
+    font-size: 1.35rem;
+  }
+
+  /* Griglie Fotografiche a 1 Colonna su Smartphone */
+  .gallery-grid-2,
+  .gallery-grid-4 {
+    grid-template-columns: 1fr;
+    gap: 1.8rem;
+  }
+  .gallery-overlay-btn {
+    opacity: 0.95;
+    transform: translateY(0);
+  }
+  .gallery-content {
+    padding: 1rem 1.1rem;
+  }
+  .gallery-title {
+    font-size: 1.15rem;
+  }
+
+  /* Sezione Video Laurea */
+  .video-player-card {
+    box-shadow: var(--shadow-flat);
+  }
+  .video-container video {
+    max-height: 52vh;
+  }
+  .video-player-caption {
+    padding: 1rem 1.1rem;
+  }
+  .video-player-caption h4 {
+    font-size: 1.18rem;
+  }
+  .compliments-wrapper {
+    gap: 1.1rem;
+  }
+  .compliment-box {
+    padding: 1.1rem;
+  }
+
+  /* Sezione Australia & Boarding Pass */
+  .horizon-photo-wrapper {
+    box-shadow: var(--shadow-flat);
+  }
+  .horizon-photo-wrapper img {
+    height: auto;
+    max-height: 280px;
+  }
+  .horizon-stamp {
+    font-size: 0.76rem;
+    padding: 0.25rem 0.6rem;
+    top: 10px;
+    right: 10px;
+  }
+  .horizon-caption-bar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.7rem;
+    padding: 1rem;
+  }
+  .boarding-pass-card {
+    padding: 1.4rem 1.1rem;
+    box-shadow: var(--shadow-flat);
+  }
+  .boarding-pass-title {
+    font-size: 1.25rem;
+  }
+  .boarding-flight-info {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+  .boarding-message {
+    font-size: 0.98rem;
+    padding: 0.85rem;
+  }
+  .boarding-pass-footer {
+    flex-direction: column;
+    gap: 0.4rem;
+    text-align: center;
+  }
+
+  /* Lightbox Modal su Smartphone Touch */
+  .modal-overlay {
+    padding: 0.35rem;
+  }
+  .modal-brutalist {
+    max-width: 100%;
+    max-height: 95vh;
+    box-shadow: 4px 4px 0px var(--border-color);
+    border-width: 3px;
+  }
+  .modal-header {
+    padding: 0.6rem 0.8rem;
+  }
+  .modal-title {
+    font-size: 0.95rem;
+  }
+  .modal-counter {
+    font-size: 0.75rem;
+    padding: 0.15rem 0.45rem;
+    margin-left: 0.5rem;
+  }
+  .modal-body {
+    min-height: 220px;
+    max-height: 52vh;
+    touch-action: pan-y;
+  }
+  .modal-body img {
+    max-height: 50vh;
+  }
+  .modal-nav-btn {
+    width: 38px;
+    height: 38px;
+    font-size: 1.05rem;
+    box-shadow: 2px 2px 0px #111111;
+  }
+  .modal-prev { left: 8px; }
+  .modal-next { right: 8px; }
+  .modal-caption {
+    padding: 0.8rem 1rem;
+  }
+  .modal-caption h4 {
+    font-size: 1.05rem;
+    margin-bottom: 0.2rem;
+  }
+  .modal-caption p {
+    font-size: 0.88rem;
+    max-height: 65px;
+    overflow-y: auto;
+  }
+
+  /* Notifica Toast Centrata */
+  .toast-notification {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: calc(100% - 2rem);
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+    font-size: 0.88rem;
+  }
+}
+
+/* Smartphone Compatti (<= 480px) */
+@media (max-width: 480px) {
+  .header-container {
+    gap: 0.5rem;
+  }
+  .btn-share-text {
+    display: none;
+  }
+  #btn-share {
+    padding: 0.45rem 0.65rem;
+    font-size: 0.95rem;
+  }
+  .section-title {
+    font-size: clamp(1.4rem, 6vw, 1.8rem);
+    padding: 0.3rem 0.8rem;
+    word-break: break-word;
+  }
+  .section-subtitle {
+    font-size: 0.92rem;
+  }
+  .boarding-flight-info {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+}
+
+/* Dispositivi Touch: Ottimizzazione Hover per evitare stati bloccati */
+@media (hover: none) {
+  .gallery-item:hover {
+    transform: none;
+    box-shadow: var(--shadow-flat);
+  }
+  .gallery-item:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-flat-hover);
+  }
+  .btn:hover {
+    transform: none;
+    box-shadow: var(--shadow-flat);
+  }
+  .btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: var(--shadow-flat-hover);
+  }
+}

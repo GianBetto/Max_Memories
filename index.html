@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Memorie Insieme | Max</title>
+  
+  <!-- Favicon Neo-Brutalista -->
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta name="theme-color" content="#ffd000">
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" id="meta-description" content="Bacheca fotografica interattiva dedicata a Max: le estati in Sardegna, il traguardo della Laurea, i nostri ricordi e gli auguri speciali per la nuova avventura in Australia.">
+  <meta name="keywords" content="memorie insieme, max, memories together, foto ricordo, sardegna, laurea, australia">
+
+  <!-- Open Graph / Social Sharing (WhatsApp, Telegram, Facebook, iMessage) -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://gianbetto.github.io/Max_Memories/">
+  <meta property="og:title" content="Memorie Insieme | Max">
+  <meta property="og:description" content="Bacheca fotografica interattiva dedicata a Max: le estati in Sardegna, il traguardo della Laurea, i nostri ricordi e gli auguri speciali per l'Australia.">
+  <meta property="og:image" content="https://gianbetto.github.io/Max_Memories/photos/FotoProfilo.jpeg">
+  <meta property="og:locale" content="it_IT">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:site_name" content="Max Memories">
+
+  <!-- Twitter Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Memorie Insieme | Max">
+  <meta name="twitter:description" content="Bacheca fotografica interattiva per Max: ricordi, laurea, Sardegna e verso l'Australia.">
+  <meta name="twitter:image" content="https://gianbetto.github.io/Max_Memories/photos/FotoProfilo.jpeg">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@500;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  
+  <!-- Stili CSS Personalizzati -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       HEADER & NAVBAR
+       ========================================== -->
+  <header class="main-header">
+    <div class="container header-container">
+      
+      <a href="#hero" class="logo-brutalist" title="Max Memories Home">
+        <span class="logo-icon">♦</span>
+        <span data-i18n="logoText">Max Memories</span>
+      </a>
+
+      <nav>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#hero" class="nav-link" data-i18n="navHome">Home</a></li>
+          <li><a href="#sardegna" class="nav-link" data-i18n="navSardegna">Sardegna</a></li>
+          <li><a href="#lauree" class="nav-link" data-i18n="navLauree">Lauree</a></li>
+          <li><a href="#altri-ricordi" class="nav-link" data-i18n="navAltriRicordi">Altri Ricordi</a></li>
+          <li><a href="#video-laurea" class="nav-link" data-i18n="navVideoLaurea">Video Laurea</a></li>
+          <li><a href="#australia" class="nav-link" data-i18n="navAustralia">Verso l'Australia</a></li>
+          <!-- Slot per controlli su smartphone nel menu a tendina -->
+          <li class="nav-mobile-tools" id="nav-mobile-tools"></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <!-- Pulsante Condividi Link -->
+        <button class="btn btn-sm btn-yellow" id="btn-share" title="Copia link della bacheca" data-i18n-title="btnShareTitle">
+          <span class="btn-share-text" data-i18n="btnShare">Condividi</span> 🔗
+        </button>
+
+        <!-- Gruppo Controlli Rapidi (Desktop: in topbar; Mobile: nel menu a tendina) -->
+        <div class="header-tools-group" id="header-tools-group">
+          <!-- Selettore Bilingue IT / EN -->
+          <button class="lang-toggle-btn" id="lang-toggle" aria-label="Cambia lingua" data-i18n-aria="ariaLangToggle" title="Cambia lingua (IT / EN)" data-i18n-title="langToggleTitle">
+            <span class="lang-chip active" id="lang-chip-it">IT</span>
+            <span class="lang-sep">|</span>
+            <span class="lang-chip" id="lang-chip-en">EN</span>
+          </button>
+          
+          <!-- Pulsante Dark Mode -->
+          <button class="theme-toggle-btn" id="theme-toggle" aria-label="Cambia tema chiaro/scuro" data-i18n-aria="ariaThemeToggle" title="Cambia Tema (Dark Mode)" data-i18n-title="themeToggleTitle">
+            <!-- Icona Sole -->
+            <svg class="theme-icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+            <!-- Icona Luna -->
+            <svg class="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span class="theme-toggle-text" id="theme-toggle-text" data-i18n="themeToggleLabel">Modalità Notte</span>
+          </button>
+        </div>
+
+        <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu Mobile" data-i18n-aria="ariaMobileMenu" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ==========================================
+         1. HERO / LANDING PAGE: MEMORIE INSIEME + MAX
+         ========================================== -->
+    <section class="hero-section" id="hero">
+      <div class="container hero-grid">
+        
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <span class="badge-brutalist" data-i18n="heroEyebrowBadge">📸 RACCOLTA FOTOGRAFICA</span>
+            <span style="font-family: var(--font-mono); font-size: 0.88rem; font-weight: bold;" data-i18n="heroEyebrowText">// I NOSTRI MOMENTI MIGLIORI</span>
+          </div>
+
+          <h1 class="hero-title">
+            <span data-i18n="heroTitleMain">MEMORIE INSIEME</span> <br>
+            <span class="hero-title-highlight" data-i18n="heroTitleHighlight">MAX &amp; AMICI</span>
+          </h1>
+
+          <p class="hero-description" data-i18n="heroDescription">
+            Una raccolta fotografica creata con il cuore per ripercorrere i momenti più belli vissuti insieme: le estati indimenticabili in Sardegna, il grande traguardo della laurea, le nostre risate e un brindisi speciale verso la tua prossima avventura in Australia!
+          </p>
+
+          <div class="hero-actions">
+            <a href="#sardegna" class="btn btn-yellow btn-lg" data-i18n="heroBtnExplore">Esplora i Ricordi ↓</a>
+            <a href="#australia" class="btn btn-orange btn-lg" data-i18n="heroBtnAustralia">Verso l'Australia 🦘</a>
+          </div>
+        </div>
+
+        <div class="hero-right">
+          <!-- Card Grande Protagonista Max -->
+          <div class="hero-max-card" data-photo-index="0" title="Clicca per ingrandire la foto di Max" data-i18n-title="heroZoomTitle">
+            <div class="hero-max-badge" data-i18n="heroCardBadge">#PROTAGONISTA ⭐</div>
+            <div class="hero-max-image-wrap">
+              <img src="photos/FotoProfilo.jpeg" alt="Max - Foto Profilo">
+            </div>
+            <div class="hero-max-caption">
+              <div>
+                <div class="hero-max-name" data-i18n="heroCardName">SIMPLY MAX</div>
+                <div class="hero-max-subtitle" data-i18n="heroCardSubtitle">Inconfondibile, inarrestabile, unico. Ready for the next chapter.</div>
+              </div>
+              <button class="btn btn-sm btn-yellow hero-max-btn" data-i18n="heroCardZoom">🔍 Zoom</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         2. SEZIONE: FOTO SARDEGNA
+         ========================================== -->
+    <section class="section-padding section-border-bottom" id="sardegna">
+      <div class="container">
+        
+        <div class="section-header-brutalist centered">
+          <h2 class="section-title bg-cyan" data-i18n="sardegnaTitle">Foto Sardegna</h2>
+          <p class="section-subtitle" data-i18n="sardegnaSubtitle">
+            Il mare cristallino, le giornate spensierate in barca, le calette nascoste e i tramonti indimenticabili dell'isola.
+          </p>
+        </div>
+
+        <div class="gallery-grid-2">
+          
+          <!-- Sardegna 1 (Barca) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="1">
+              <img src="photos/Barca.jpeg" alt="Onde & Vento in Sardegna" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="sardegna1Tag">FULL THROTTLE ⚡</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#01</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="sardegna1Title">Onde &amp; Vento</h3>
+              <p class="gallery-desc" data-i18n="sardegna1Desc">Motori accesi, schizzi in faccia e risate a tutto volume.</p>
+              <button class="btn btn-sm btn-cyan" data-photo-index="1" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Sardegna 2 (Tramonto) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="2">
+              <img src="photos/Tramonto.jpeg" alt="La Quiete del Viaggiatore al tramonto" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="sardegna2Tag">CREPUSCOLO 🌄</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#02</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="sardegna2Title">La Quiete del Viaggiatore</h3>
+              <p class="gallery-desc" data-i18n="sardegna2Desc">Il sole cala sul Mediterraneo, salutando un'altra memorabile pagina di vita.</p>
+              <button class="btn btn-sm btn-cyan" data-photo-index="2" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Sardegna 3 (Serate Sarde) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="3">
+              <img src="photos/Sardegna.jpeg" alt="Serate Sarde tra amici" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="sardegna3Tag">SERATE SARDE 🌙</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#03</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="sardegna3Title">Serate Sarde</h3>
+              <p class="gallery-desc" data-i18n="sardegna3Desc">Squadra al completo pronta alla vacanza in Sardegna.</p>
+              <button class="btn btn-sm btn-cyan" data-photo-index="3" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Sardegna 4 (Marinaio) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="4">
+              <img src="photos/Ancora.jpeg" alt="Marinaio pronto a gettare l'ancora" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="sardegna4Tag">MARINAIO ⚓</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#04</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="sardegna4Title">Marinaio</h3>
+              <p class="gallery-desc" data-i18n="sardegna4Desc">Pronto a gettare l'ancora nel posto perfetto per fermare il tempo.</p>
+              <button class="btn btn-sm btn-cyan" data-photo-index="4" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         3. SEZIONE: FOTO LAUREE
+         ========================================== -->
+    <section class="section-padding section-border-bottom" id="lauree">
+      <div class="container">
+        
+        <div class="section-header-brutalist centered">
+          <h2 class="section-title bg-pink" data-i18n="laureeTitle">Foto Lauree</h2>
+          <p class="section-subtitle" data-i18n="laureeSubtitle">
+            Il coronamento di un grande percorso di studi: la corona d'alloro, la gioia della proclamazione e i festeggiamenti con chi ti vuole bene.
+          </p>
+        </div>
+
+        <div class="gallery-grid-2">
+          
+          <!-- Laurea 1 (Proclamazione Max Dottore) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="5">
+              <img src="photos/laureaM.jpeg" alt="Max Dottore con alloro" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="lauree1Tag">PRIMO ALLORO 🎓</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#01</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="lauree1Title">Max Dottore!</h3>
+              <p class="gallery-desc" data-i18n="lauree1Desc">La conquista del primo alloro. Orgogliosi di te!</p>
+              <button class="btn btn-sm btn-pink" data-photo-index="5" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Laurea 2 (Brindisi con Gruppo) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="6">
+              <img src="photos/LaureaG.jpeg" alt="Vittoria Condivisa al Poli" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="lauree2Tag">CONDIVISIONE ❤️</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#02</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="lauree2Title">Vittoria Condivisa</h3>
+              <p class="gallery-desc" data-i18n="lauree2Desc">Nessun traguardo è davvero bello se non hai con chi festeggiarlo e stringerti forte.</p>
+              <button class="btn btn-sm btn-pink" data-photo-index="6" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Laurea 3 (Facce Buffe & Risate) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="7">
+              <img src="photos/facce.jpeg" alt="La Nostra Spontaneità e risate" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="lauree3Tag">GIOIA VERA 😄</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#03</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="lauree3Title">La Nostra Spontaneità</h3>
+              <p class="gallery-desc" data-i18n="lauree3Desc">La bellezza di potersi mostrare senza maschere, ridendo a crepapelle per le cose più semplici.</p>
+              <button class="btn btn-sm btn-pink" data-photo-index="7" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Laurea 4 (La Compagnia / Gli Amici) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="8">
+              <img src="photos/Amici.jpeg" alt="Amicizie e foto di gruppo" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="lauree4Tag">AMICIZIE ✨</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#04</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="lauree4Title">Amicizie</h3>
+              <p class="gallery-desc" data-i18n="lauree4Desc">Uno scatto con le amiche.</p>
+              <button class="btn btn-sm btn-pink" data-photo-index="8" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         4. SEZIONE: ALTRI RICORDI
+         ========================================== -->
+    <section class="section-padding section-border-bottom" id="altri-ricordi">
+      <div class="container">
+        
+        <div class="section-header-brutalist centered">
+          <h2 class="section-title bg-mint" data-i18n="altriTitle">Altri Ricordi</h2>
+          <p class="section-subtitle" data-i18n="altriSubtitle">
+            I momenti di tutti i giorni, le risate a crepapelle, le pause gelato e la bellezza genuina della nostra amicizia.
+          </p>
+        </div>
+
+        <div class="gallery-grid-2">
+          
+          <!-- Altri 1 (Momenti di Svago) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="9">
+              <img src="photos/Uni.jpeg" alt="Momenti di Svago serate post lezione" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="altri1Tag">MOMENTI DI SVAGO 🎒</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#01</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="altri1Title">Momenti di Svago</h3>
+              <p class="gallery-desc" data-i18n="altri1Desc">Ricordi delle serate post lezione.</p>
+              <button class="btn btn-sm btn-mint" data-photo-index="9" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Altri 2 (Polimi Run) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="10">
+              <img src="photos/polimiRun.jpeg" alt="Polimi Run 10km da veri atleti" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="altri2Tag">POLIMI RUN 🏃</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#02</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="altri2Title">Polimi Run</h3>
+              <p class="gallery-desc" data-i18n="altri2Desc">10km da veri atleti!</p>
+              <button class="btn btn-sm btn-mint" data-photo-index="10" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Altri 3 (Pausa Gelato) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="11">
+              <img src="photos/Gelato.jpeg" alt="Pausa Gelato Insieme" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="altri3Tag">PAUSA GELATO 🍦</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#03</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="altri3Title">Pausa Gelato</h3>
+              <p class="gallery-desc" data-i18n="altri3Desc">Il gusto delle cose semplici condivise con le persone giuste.</p>
+              <button class="btn btn-sm btn-mint" data-photo-index="11" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+          <!-- Altri 4 (Lo Sguardo al Futuro) -->
+          <article class="gallery-item">
+            <div class="gallery-image-container" data-photo-index="12">
+              <img src="photos/PrimoPiano.jpeg" alt="Lo Sguardo al Futuro" loading="lazy">
+              <button class="btn btn-sm btn-yellow gallery-overlay-btn">🔍 Zoom</button>
+            </div>
+            <div class="gallery-content">
+              <div class="gallery-item-header">
+                <span class="gallery-tag" data-i18n="altri4Tag">SGUARDI SINCERI ✨</span>
+                <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--color-muted);">#04</span>
+              </div>
+              <h3 class="gallery-title" data-i18n="altri4Title">Lo Sguardo al Futuro</h3>
+              <p class="gallery-desc" data-i18n="altri4Desc">Gli occhi di chi sa da dove viene e non ha paura di dove sta andando.</p>
+              <button class="btn btn-sm btn-mint" data-photo-index="12" style="margin-top: auto;" data-i18n="btnZoom">Ingrandisci →</button>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         5. SPECIALE LAUREA: COMPLIMENTI & VIDEO
+         ========================================== -->
+    <section class="video-section" id="video-laurea">
+      <div class="container">
+        
+        <div class="section-header-brutalist centered">
+          <h2 class="section-title bg-yellow" data-i18n="videoSectionTitle">Speciale Laurea: Complimenti &amp; Video</h2>
+          <p class="section-subtitle" data-i18n="videoSectionSubtitle">
+            Rivivi le emozioni di quel giorno: il video dei festeggiamenti e i messaggi speciali da parte di tutti noi.
+          </p>
+        </div>
+
+        <div class="video-layout-grid">
+          
+          <!-- Card Player Video HTML5 -->
+          <div class="video-player-card">
+            <div class="video-player-header">
+              <span data-i18n="videoBadgeHeader">🎬 FILM DELLA PROCLAMAZIONE</span>
+              <span class="badge-brutalist" style="background-color: var(--color-yellow);" data-i18n="videoBadgePill">HD VIDEO</span>
+            </div>
+            
+            <div class="video-container">
+              <video controls playsinline preload="metadata" poster="photos/laureaM.jpeg">
+                <source src="photos/LaureaVideo.mp4" type="video/mp4">
+                <span data-i18n="videoFallbackText">Il tuo browser non supporta la riproduzione video HTML5.</span>
+              </video>
+            </div>
+
+            <div class="video-player-caption">
+              <h4 data-i18n="videoCaptionTitle">La Proclamazione &amp; I Festeggiamenti di Max</h4>
+              <p data-i18n="videoCaptionDesc">Il momento ufficiale, gli applausi di amici e familiari e l'esplosione di gioia per la tua Laurea Triennale.</p>
+            </div>
+          </div>
+
+          <!-- Riquadro Complimenti e Dediche Post-It -->
+          <div class="compliments-wrapper">
+            
+            <div class="compliment-box compliment-yellow">
+              <div class="compliment-author" data-i18n="compliment1Author">🎓 FIERI DI TE, DOTTORE!</div>
+              <p class="compliment-text" data-i18n="compliment1Text">
+                "Hai affrontato ogni esame con determinazione, senza mai perdere il sorriso e la voglia di condividere i momenti più belli insieme. Grande Max!"
+              </p>
+            </div>
+
+            <div class="compliment-box compliment-mint">
+              <div class="compliment-author" data-i18n="compliment2Author">🎉 IL BRINDISI PIÙ BELLO</div>
+              <p class="compliment-text" data-i18n="compliment2Text">
+                "Dalle serate a studiare fino a notte fonda al brindisi più meritato di sempre. Sei stato un esempio di costanza e umiltà. Congratulazioni dal profondo del cuore!"
+              </p>
+            </div>
+
+            <div class="compliment-box compliment-cyan">
+              <div class="compliment-author" data-i18n="compliment3Author">🚀 IL FUTURO TI APPARTIENE</div>
+              <p class="compliment-text" data-i18n="compliment3Text">
+                "Questa laurea è solo una delle tante tappe vincenti della tua vita. Continua a puntare in alto con l'entusiasmo che ti contraddistingue. Siamo con te!"
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==========================================
+         6. CONCLUSIONE: PROSSIMA AVVENTURA IN AUSTRALIA
+         ========================================== -->
+    <section class="australia-section" id="australia">
+      <div class="container">
+        
+        <div class="section-header-brutalist centered">
+          <h2 class="section-title bg-orange" data-i18n="australiaTitle">Verso Nuovi Orizzonti</h2>
+          <p class="section-subtitle" data-i18n="australiaSubtitle">
+            Il prossimo capitolo sta per iniziare: destinazione Australia! Un grande abbraccio e i nostri migliori auguri per la tua avventura.
+          </p>
+        </div>
+
+        <div class="australia-grid">
+          
+          <!-- Foto Orizzonte Panoramica -->
+          <div class="horizon-photo-wrapper" data-photo-index="13" title="Clicca per ingrandire la Foto Orizzonte" data-i18n-title="horizonZoomTitle">
+            <div class="horizon-stamp" data-i18n="horizonStamp">AUSTRALIA TI ATTENDE 🦘</div>
+            <img src="photos/Orizzonte.jpeg" alt="Verso Nuovi Orizzonti - Orizzonte" loading="lazy">
+            <div class="horizon-caption-bar">
+              <div>
+                <strong data-i18n="horizonCaptionTitle">VERSO L'ORIZZONTE</strong>
+                <p style="font-size: 0.88rem; color: var(--color-muted); margin: 0;" data-i18n="horizonCaptionDesc">Uno sguardo fiero puntato verso il futuro e nuove scoperte</p>
+              </div>
+              <button class="btn btn-sm btn-yellow" data-photo-index="13" data-i18n="heroCardZoom">🔍 Zoom</button>
+            </div>
+          </div>
+
+          <!-- Boarding Pass / Carta d'Imbarco Simbolica -->
+          <div class="boarding-pass-card">
+            
+            <div class="boarding-pass-header">
+              <div>
+                <span class="badge-brutalist" style="background-color: var(--color-orange); color: #fff; margin-bottom: 0.4rem;" data-i18n="boardingBadge">BOARDING PASS</span>
+                <div class="boarding-pass-title" data-i18n="boardingTitle">VOLO PER L'AUSTRALIA ✈️</div>
+              </div>
+              <div style="font-size: 2.2rem;">🌏</div>
+            </div>
+
+            <div class="boarding-flight-info">
+              <div class="boarding-flight-item">
+                <span data-i18n="boardingPassengerLabel">PASSEGGERO</span>
+                <strong data-i18n="boardingPassengerVal">MAX</strong>
+              </div>
+              <div class="boarding-flight-item">
+                <span data-i18n="boardingDestLabel">DESTINAZIONE</span>
+                <strong data-i18n="boardingDestVal">AUSTRALIA 🇦🇺</strong>
+              </div>
+              <div class="boarding-flight-item">
+                <span data-i18n="boardingTicketLabel">BIGLIETTO</span>
+                <strong data-i18n="boardingTicketVal">SOLA ANDATA // FULL VIBES</strong>
+              </div>
+              <div class="boarding-flight-item">
+                <span data-i18n="boardingClassLabel">CLASSE</span>
+                <strong data-i18n="boardingClassVal">AVVENTURA ILLIMITATA</strong>
+              </div>
+            </div>
+
+            <div class="boarding-message" data-i18n="boardingMessage">
+              "Caro Max, l'Australia ti aspetta a braccia aperte. Porta con te la tua grinta, la tua curiosità instancabile e questo zaino pieno di memorie indelebili. Ovunque sarai nel mondo, per tutti noi sarà come averti accanto. Fai buon viaggio, vivi ogni giorno al massimo e guarda sempre verso nuovi orizzonti!"
+            </div>
+
+            <div class="boarding-pass-footer">
+              <span data-i18n="boardingPassFooterFrom">Dagli amici di sempre ❤️</span>
+              <strong data-i18n="boardingPassFooterWish">A prestissimo, ovunque sarai!</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODAL LIGHTBOX FULLSCREEN
+       ========================================== -->
+  <div class="modal-overlay" id="lightbox-modal" role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+    <div class="modal-brutalist">
+      
+      <div class="modal-header">
+        <div style="display: flex; align-items: center;">
+          <span class="modal-title" id="lightbox-title" data-i18n="modalTitle">🔍 Visualizzazione Ricordo</span>
+          <span class="modal-counter" id="lightbox-counter">1 / 14</span>
+        </div>
+        <button class="modal-close-btn" id="lightbox-close" aria-label="Chiudi visualizzatore" data-i18n-aria="ariaCloseModal">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <button class="modal-nav-btn modal-prev" id="lightbox-prev" aria-label="Foto precedente" data-i18n-aria="ariaPrevPhoto">&#10094;</button>
+        <img id="lightbox-img" src="" alt="Foto Ricordo Ingrandita">
+        <button class="modal-nav-btn modal-next" id="lightbox-next" aria-label="Foto successiva" data-i18n-aria="ariaNextPhoto">&#10095;</button>
+      </div>
+
+      <div class="modal-caption">
+        <h4 id="lightbox-caption-title">Titolo del Ricordo</h4>
+        <p id="lightbox-caption-desc">Descrizione del ricordo.</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div class="toast-notification" id="toast-notification">
+    <span id="toast-message">Link copiato negli appunti! 🚀</span>
+  </div>
+
+  <!-- ==========================================
+       FOOTER
+       ========================================== -->
+  <footer class="main-footer">
+    <div class="container">
+      
+      <div class="footer-grid">
+        
+        <div>
+          <div class="logo-brutalist" style="margin-bottom: 0.9rem;">
+            <span class="logo-icon">♦</span>
+            <span data-i18n="footerLogo">Max Memories</span>
+          </div>
+          <p style="font-size: 0.95rem; color: var(--color-muted); max-width: 380px;" data-i18n="footerDesc">
+            Una bacheca ricordo speciale e ricca di colori per celebrare i momenti condivisi con Max e augurargli il meglio nella sua nuova avventura.
+          </p>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom: 0.8rem; font-size: 1rem;" data-i18n="footerNavTitle">Navigazione Rapida</h4>
+          <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.45rem; font-family: var(--font-mono); font-size: 0.9rem;">
+            <li><a href="#hero" data-i18n="footerLinkHero">→ Home &amp; Max Profilo</a></li>
+            <li><a href="#sardegna" data-i18n="footerLinkSardegna">→ Foto Sardegna</a></li>
+            <li><a href="#lauree" data-i18n="footerLinkLauree">→ Foto Lauree</a></li>
+            <li><a href="#altri-ricordi" data-i18n="footerLinkAltri">→ Altri Ricordi</a></li>
+            <li><a href="#video-laurea" data-i18n="footerLinkVideo">→ Video Laurea &amp; Complimenti</a></li>
+            <li><a href="#australia" data-i18n="footerLinkAustralia">→ Verso l'Australia (Orizzonte)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 style="margin-bottom: 0.8rem; font-size: 1rem;" data-i18n="footerWishesTitle">Buon Viaggio Max!</h4>
+          <p style="font-size: 0.9rem; color: var(--color-muted); margin-bottom: 0.8rem;" data-i18n="footerWishesText">
+            In bocca al lupo per la tua nuova vita in Australia. Ricordati che qui avrai sempre una casa e degli amici pronti ad accoglierti.
+          </p>
+          <a href="#hero" class="btn btn-sm btn-yellow" data-i18n="footerBackTop">Torna all'Inizio ↑</a>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <div data-i18n="footerCopyright">&copy; 2026 Memorie Insieme &middot; Dedicato a Max</div>
+        <div data-i18n="footerAffection">Memorie Insieme &middot; Con affetto sincero ❤️</div>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- Traduzioni Bilingue (IT / EN) -->
+  <script src="translations.js"></script>
+  <!-- Script Principale -->
+  <script src="script.js"></script>
+
+</body>
+</html>
